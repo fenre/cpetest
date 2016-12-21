@@ -8,11 +8,9 @@ interface = "enp8s0"
 puts "Starting tests. "
 
 
-def set_mode(speed, duplex)
-    eth_mode(interface,speed,duplex)
-end
 
-set_mode(10,"full")
+
+set_mode(interface, 10,"full")
 
 
 #show_ip()
@@ -42,7 +40,7 @@ def get_duplex(interface)
     %x(ethtool #{interface} | grep Duplex 2>/dev/null)
 end
 
-def eth_mode(interface, speed, duplex)
+def set_mode(interface, speed, duplex)
     %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
     get_speed(interface)
 end
