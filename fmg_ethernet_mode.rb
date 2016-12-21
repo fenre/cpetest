@@ -20,10 +20,10 @@ def print_status(interface)
     puts "Settings on interface #{interface} after configuration:"
     puts get_speed(interface)
     puts get_duplex(interface)
+    puts "-------------------"
 end
 
-def set_mode(interface, speed, duplex)
-    
+def set_mode(interface, speed, duplex)    
     %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
     puts "Configuring #{interface} to #{speed}MB/s and #{duplex} duplex. \n..."
     sleep(3)
