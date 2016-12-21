@@ -25,7 +25,7 @@ end
 def set_mode(interface, speed, duplex)
     
     %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
-    puts "Configuring..."
+    puts "Configuring #{interface} to #{speed}MB/s and #{duplex} duplex."
     sleep(3)
     print_status(interface)
 end
