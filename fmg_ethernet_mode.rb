@@ -19,14 +19,12 @@ end
 def set_mode(interface, speed, duplex)
     %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
     get_speed(interface)
+    get_duplex(interface)
 end
 
 puts "Starting tests. "
 
-
-
-
-set_mode(interface, 10, "full")
+set_mode(interface, 1000, "full")
 
 
 #show_ip()
