@@ -34,5 +34,6 @@ puts current
 show_ip()
 
 ethernet_full()
-sleep(1)
+puts "Setting mode to 10MB/s, Full duplex"
+sleep(3)
 puts "Mode set: \n" + get_speed() + get_duplex()
