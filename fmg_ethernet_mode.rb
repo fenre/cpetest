@@ -1,9 +1,18 @@
 #!/usr/bin/env ruby
 
 current = "Current IP Configuration"
-show_ip = %x(ip a show dev enp8s0 | grep inet) + "\n"
-speed = %x(ethtool enp8s0 | grep Speed)
-duplex = %x(ethtool enp8s0 | grep Duplex)
+def show_ip()
+    puts %x(ip a show dev enp8s0 | grep inet) + "\n"
+end
+
+def get_speed()
+    speed = %x(ethtool enp8s0 | grep Speed)
+end
+
+def get_duplex()
+    duplex = %x(ethtool enp8s0 | grep Duplex)
+end
+
 def ethernet_half()
   %x(sudo ethtool -s enp8s0 speed 10 duplex half)
 end
@@ -15,16 +24,16 @@ end
 puts "Starting tests. "
 
 puts current
-puts show_ip
+show_ip()
 ethernet_half()
-speed
-duplex
+speed()
+duplex()
 puts "Setting mode: \n" + speed + duplex
 
 puts current
-puts show_ip
+show_ip()
 
 ethernet_full()
-speed
-duplex
+speed()
+duplex()
 puts "Setting mode: \n" + speed + duplex
