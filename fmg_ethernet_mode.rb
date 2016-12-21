@@ -17,7 +17,7 @@ class Modes
 
 end
 
-set_mode(10, full)
+Modes.set_mode(10, full)
 
 
 #show_ip()
