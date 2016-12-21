@@ -34,5 +34,5 @@ puts current
 show_ip()
 
 ethernet_full()
-sleep(5)
+sleep(1)
 puts "Mode set: \n" + get_speed() + get_duplex()
