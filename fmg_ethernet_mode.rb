@@ -23,7 +23,7 @@ def print_status(interface)
 end
 
 def set_mode(interface, speed, duplex)
-    show_ip(interface)
+    
     %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
     puts "Configuring..."
     sleep(3)
@@ -31,6 +31,7 @@ def set_mode(interface, speed, duplex)
 end
 
 puts "Starting tests. "
+show_ip(interface)
 
 set_mode(interface, 1000, "full")
 set_mode(interface,10,"half")
