@@ -6,11 +6,11 @@ def show_ip()
 end
 
 def get_speed()
-    speed = %x(ethtool enp8s0 | grep Speed)
+    %x(ethtool enp8s0 | grep Speed)
 end
 
 def get_duplex()
-    duplex = %x(ethtool enp8s0 | grep Duplex)
+    %x(ethtool enp8s0 | grep Duplex)
 end
 
 def ethernet_half()
@@ -28,7 +28,7 @@ show_ip()
 ethernet_half()
 get_speed()
 get_duplex()
-puts "Setting mode: \n" + speed + duplex
+puts "Setting mode: \n" + get_speed() + get_duplex()
 
 puts current
 show_ip()
@@ -36,4 +36,4 @@ show_ip()
 ethernet_full()
 get_speed()
 get_duplex()
-puts "Setting mode: \n" + speed + duplex
+#puts "Setting mode: \n" + speed + duplex
