@@ -4,13 +4,29 @@
 current = "Current IP Configuration"
 interface = "enp8s0"
 
+def show_ip(interface)
+    puts %x(ip a show dev #{interface} | grep inet) + "\n"
+end
+
+def get_speed(interface)
+    %x(ethtool #{interface} | grep Speed 2>/dev/null)
+end
+
+def get_duplex(interface)
+    %x(ethtool #{interface} | grep Duplex 2>/dev/null)
+end
+
+def set_mode(interface, speed, duplex)
+    %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
+    get_speed(interface)
+end
 
 puts "Starting tests. "
 
 
 
 
-set_mode(interface, 10,"full")
+set_mode(interface, 10, "full")
 
 
 #show_ip()
@@ -28,19 +44,3 @@ set_mode(interface, 10,"full")
 #puts "Mode set: \n" + get_speed() + get_duplex()
 
 
-def show_ip(interface)
-    puts %x(ip a show dev #{interface} | grep inet) + "\n"
-end
-
-def get_speed(interface)
-    %x(ethtool #{interface} | grep Speed 2>/dev/null)
-end
-
-def get_duplex(interface)
-    %x(ethtool #{interface} | grep Duplex 2>/dev/null)
-end
-
-def set_mode(interface, speed, duplex)
-    %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
-    get_speed(interface)
-end
