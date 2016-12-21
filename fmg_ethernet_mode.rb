@@ -17,7 +17,7 @@ def get_duplex(interface)
 end
 
 def print_status(interface)
-    puts "Settings on interface #{interface}:"
+    puts "Settings on interface #{interface} after configuration:"
     puts get_speed(interface)
     puts get_duplex(interface)
 end
@@ -25,7 +25,7 @@ end
 def set_mode(interface, speed, duplex)
     
     %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
-    puts "Configuring #{interface} to #{speed}MB/s and #{duplex} duplex."
+    puts "Configuring #{interface} to #{speed}MB/s and #{duplex} duplex. \n..."
     sleep(3)
     print_status(interface)
 end
