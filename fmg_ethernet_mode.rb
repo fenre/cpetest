@@ -16,17 +16,24 @@ def get_duplex(interface)
     %x(ethtool #{interface} | grep Duplex 2>/dev/null)
 end
 
-def set_mode(interface, speed, duplex)
-    %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
-    sleep(3)
+def print_status(interface)
+    puts "Settings on interface #{interface}:"
     puts get_speed(interface)
     puts get_duplex(interface)
+end
+
+def set_mode(interface, speed, duplex)
+    show_ip(interface)
+    %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
+    puts "Configuring..."
+    sleep(3)
+    print_status(interface)
 end
 
 puts "Starting tests. "
 
 set_mode(interface, 1000, "full")
-
+set_mode(interface,10,"half")
 
 #show_ip()
 #ethernet_half()
