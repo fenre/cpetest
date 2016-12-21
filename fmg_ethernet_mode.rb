@@ -18,8 +18,8 @@ end
 
 def set_mode(interface, speed, duplex)
     %x(sudo ethtool -s #{interface} speed #{speed} duplex #{duplex})
-    get_speed(interface)
-    get_duplex(interface)
+    puts get_speed(interface)
+    puts get_duplex(interface)
 end
 
 puts "Starting tests. "
