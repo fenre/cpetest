@@ -26,14 +26,14 @@ puts "Starting tests. "
 puts current
 show_ip()
 ethernet_half()
-speed()
-duplex()
+get_speed()
+get_duplex()
 puts "Setting mode: \n" + speed + duplex
 
 puts current
 show_ip()
 
 ethernet_full()
-speed()
-duplex()
+get_speed()
+get_duplex()
 puts "Setting mode: \n" + speed + duplex
