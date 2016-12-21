@@ -14,11 +14,11 @@ def get_duplex()
 end
 
 def ethernet_half()
-  %x(sudo ethtool -s enp8s0 speed 10 duplex half)
+  puts %x(sudo ethtool -s enp8s0 speed 10 duplex half)
 end
 
 def ethernet_full()
-  %x(sudo ethtool -s enp8s0 speed 10 duplex full)
+  puts %x(sudo ethtool -s enp8s0 speed 10 duplex full)
 end
 
 puts "Starting tests. "
