@@ -6,7 +6,7 @@ def show_ip()
 end
 
 def get_speed()
-    %x(ethtool enp8s0 | grep Speed | 2>/dev/null)
+    %x(ethtool enp8s0 | grep Speed 2>/dev/null)
 end
 
 def get_duplex()
@@ -26,14 +26,12 @@ puts "Starting tests. "
 puts current
 show_ip()
 ethernet_half()
-get_speed()
-get_duplex()
+#get_speed()
+#get_duplex()
 puts "Setting mode: \n" + get_speed() + get_duplex()
 
 puts current
 show_ip()
 
 ethernet_full()
-get_speed()
-get_duplex()
 puts "Setting mode: \n" + get_speed() + get_duplex()
