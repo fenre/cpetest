@@ -33,8 +33,13 @@ end
 puts "Starting tests. "
 show_ip(interface)
 
-set_mode(interface, 1000, "full")
+set_mode(interface,10,"full")
 set_mode(interface,10,"half")
+set_mode(interface,100,"full")
+set_mode(interface,100,"half")
+set_mode(interface,1000,"full")
+
+
 
 #show_ip()
 #ethernet_half()
