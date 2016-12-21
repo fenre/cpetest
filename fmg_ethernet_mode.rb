@@ -1,39 +1,35 @@
 #!/usr/bin/env ruby
+require "network"
 
 current = "Current IP Configuration"
-def show_ip()
-    puts %x(ip a show dev enp8s0 | grep inet) + "\n"
-end
 
-def get_speed()
-    %x(ethtool enp8s0 | grep Speed 2>/dev/null)
-end
 
-def get_duplex()
-    %x(ethtool enp8s0 | grep Duplex 2>/dev/null)
-end
-
-def ethernet_half()
-  puts %x(sudo ethtool -s enp8s0 speed 10 duplex half)
-end
-
-def ethernet_full()
-  puts %x(sudo ethtool -s enp8s0 speed 10 duplex full)
-end
 
 puts "Starting tests. "
 
-puts current
-show_ip()
-ethernet_half()
+class Modes
+    include Network
+    
+    def set_mode(speed, duplex)
+        interface = "enp8s0"
+        eth_mode(interface,speed,duplex)
+    end
+
+end
+
+set_mode(10, half)
+
+
+#show_ip()
+#ethernet_half()
 #get_speed()
 #get_duplex()
-puts "Setting mode: \n" + get_speed() + get_duplex()
+#puts "Setting mode: \n" + get_speed() + get_duplex()
 
-puts current
-show_ip()
+#puts current
+#show_ip()
 
-ethernet_full()
-puts "Setting mode to 10MB/s, Full duplex"
-sleep(3)
-puts "Mode set: \n" + get_speed() + get_duplex()
+#ethernet_full()
+#puts "Setting mode to 10MB/s, Full duplex"
+#sleep(3)
+#puts "Mode set: \n" + get_speed() + get_duplex()
