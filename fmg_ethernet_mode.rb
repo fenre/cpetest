@@ -17,7 +17,7 @@ class Modes
 
 end
 
-set_mode(10, half)
+set_mode(10, full)
 
 
 #show_ip()
