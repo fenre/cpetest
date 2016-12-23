@@ -11,3 +11,4 @@ dhcp_lease:
     Dette enkle scriptet restarter NetworkManager og henter ut siste 
     DHCP Lease Time. Gjør en endring i Prov eller selfcare, og kjør
     så scriptet for å se at forandringen er skjedd.
+    
