@@ -1,0 +1,10 @@
+lease=$(ls -alt /var/lib/NetworkManager/ | sed -n 2p | awk '{print $9}' ) && cat /var/lib/NetworkManager/$lease | grep dhcp-lease*
+
+
+355  sudo service network-manager restart
+356  cat dhclient-* | grep dhcp-lease-time
+357  nmcli con
+358  nmcli con down id enp8s0
+359  nmcli con
+360  sudo dhclient -r enp8s0
+361  sudo dhclient enp8s0

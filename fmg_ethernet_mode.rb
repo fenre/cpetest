@@ -39,20 +39,3 @@ set_mode(interface,100,"full")
 set_mode(interface,100,"half")
 set_mode(interface,1000,"full")
 
-
-
-#show_ip()
-#ethernet_half()
-#get_speed()
-#get_duplex()
-#puts "Setting mode: \n" + get_speed() + get_duplex()
-
-#puts current
-#show_ip()
-
-#ethernet_full()
-#puts "Setting mode to 10MB/s, Full duplex"
-#sleep(3)
-#puts "Mode set: \n" + get_speed() + get_duplex()
-
-
