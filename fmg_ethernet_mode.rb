@@ -22,7 +22,7 @@ eth1 = "enp8s0"
 
 class EthernetMode
     include Networking
-    
+
     def initialize(interface="enp8s0")
         @interface = interface
         puts "Starting tests. "
@@ -44,7 +44,7 @@ class EthernetMode
 end
 
 first = EthernetMode.new
-first.print_status
+first.set_mode(10,"half")
 
 #show_ip(interface)
 #set_mode(interface,10,"full")
