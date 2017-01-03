@@ -11,9 +11,9 @@ class EthernetMode
 
     def print_status
         puts "Settings on interface #{@interface} after configuration:"
-        puts get_speed(@interface)
+        get_speed(@interface)
         puts get_duplex(@interface)
-        puts "-" * 10
+        puts "-" * 60
     end
 
     def set_mode(speed, duplex)    
