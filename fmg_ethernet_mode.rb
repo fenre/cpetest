@@ -35,7 +35,11 @@ def full_test_run
     return "Finished full test run. "
 end
 
-def single_test_run(speed, duplex)
+def single_test_run
+    puts "Enter speed (10,100,1000): "
+    speed = gets.chomp
+    puts "Enter duplex (half, full): "
+    duplex = gets.chomp
     single = EthernetMode.new
     single.set_mode(speed, duplex)
     return "Finishet single test run. "
@@ -44,7 +48,7 @@ end
 unless ARGV[0] == "single" || ARGV[0] == "full"
     puts "Argument should be 'single' or 'full'. "
     exit
- end
- 
+end
+
 run = ARGV[0]
-(run == "single" ? single_test_run(10,"half") : full_test_run)
+(run == "single" ? single_test_run : full_test_run)
