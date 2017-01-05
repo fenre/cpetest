@@ -36,10 +36,10 @@ def full_test_run
 end
 
 def single_test_run
-    puts "Enter speed (10,100,1000): "
-    speed = gets.chomp
-    puts "Enter duplex (half, full): "
-    duplex = gets.chomp
+    print "Enter speed (10,100,1000): "
+    speed = STDIN.gets.chomp
+    print "Enter duplex (half, full): "
+    duplex = STDIN.gets.chomp
     single = EthernetMode.new
     single.set_mode(speed, duplex)
     return "Finishet single test run. "
