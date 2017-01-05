@@ -11,7 +11,7 @@ class EthernetMode
 
     def print_status
         puts "Settings on interface #{@interface} after configuration:"
-        get_speed(@interface)
+        puts get_speed(@interface)
         puts get_duplex(@interface)
         puts "-" * 60
     end
@@ -24,13 +24,27 @@ class EthernetMode
     end
 end
 
-first = EthernetMode.new
-first.set_mode(10,"half")
+def full_test_run
+    full = EthernetMode.new
+    full.set_mode(10,"half")
+    full.set_mode(10,"full")
+    full.set_mode(100,"half")
+    full.set_mode(100,"full")
+    full.set_mode(1000,"half")
+    full.set_mode(1000,"full")
+    return "Finished full test run. "
+end
 
-#show_ip(interface)
-#set_mode(interface,10,"full")
-#set_mode(interface,10,"half")
-#set_mode(interface,100,"full")
-#set_mode(interface,100,"half")
-#set_mode(interface,1000,"full")
+def single_test_run(speed, duplex)
+    single = EthernetMode.new
+    single.set_mode(speed, duplex)
+    return "Finishet single test run. "
+end
 
+unless ARGV[0] == "single" || ARGV[0] == "full"
+    puts "Argument should be 'single' or 'full'. "
+    exit
+ end
+ 
+run = ARGV[0]
+(run == "single" ? single_test_run(10,"half") : full_test_run)
