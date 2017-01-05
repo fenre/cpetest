@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-load "network.rb"
+load "lib/network.rb"
 
 class EthernetMode
     include Networking
